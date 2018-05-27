@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  service-config:
+    build: service-config
+    restart: always
+    ports:
+      - 8888:8888
+
+  service-registry:
+    build: service-registry
+    restart: always
+    ports:
+      - 8761:8761
+
+  link-mongodb:
+    build: mongodb
+    ports:
+      - 27107:27017
+
+  service-link:
+    build: service-link
+    restart: always
+    ports:
+      - 8989:8989
+
+  service-gateway:
+    build: service-gateway
+    restart: always
+    ports:
+      - 8686:8686

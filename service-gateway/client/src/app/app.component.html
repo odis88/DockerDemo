@@ -1,0 +1,25 @@
+<div class="container">
+  <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+  <div class="text-center">
+    <img src="assets/docker.png" style="text-align: center"/>
+  </div>
+  <div class="text-center">
+    <h1 style="font-family: Monaco">Docker: Not to Be Confused with a Blue Whale</h1>
+  </div>
+
+    <div class="text-center">
+      <div class="input-group">
+        <input #longUrl [(ngModel)]="longUrlValue" type="text" class="form-control" />
+        <span class="input-group-btn">
+          <button class="btn btn-success" (click)="doPOST(longUrl.value)"type="button">Go!</button>
+        </span>
+      </div>
+      <h2 style="color: blue; margin-top: 100px">{{shortUrl}}</h2>
+    </div>
+
+  <div class="navbar navbar-fixed-bottom">
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://github.com/savosyuk"> Stanislav Savosiuk</a>
+    </div>
+  </div>
+</div>

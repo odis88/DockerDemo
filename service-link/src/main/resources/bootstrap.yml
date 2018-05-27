@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: service-link
+  cloud:
+    config:
+      uri: http://service-config:8888
+      password: test
+      username: user
+      fail-fast: true

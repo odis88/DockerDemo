@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://plugins.gradle.org/m2"
+        }
+    }
+    dependencies {
+        classpath("com.moowork.gradle:gradle-node-plugin:1.2.0")
+    }
+}
+
+apply plugin: 'com.moowork.node'
+
+node {
+    version = "10.1.0"
+    download = true
+    nodeModulesDir = file("client")
+}
+
+task buildClientDev(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'build'
+    description = 'Compile client side folder for development'
+    args = ['run', 'buildDev']
+}
+
+task buildClient(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'build'
+    description = "Compile client side folder for production"
+    args = ['run', 'build']
+}
+
+task buildClientWatch(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'application'
+    description = "Build and watches the client side assets for rebuilding"
+    args = ['run', 'buildWatch']
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.springframework.cloud:spring-cloud-starter-config")
+    compile("org.springframework.cloud:spring-cloud-starter-eureka")
+    compile("org.springframework.cloud:spring-cloud-starter-zuul")
+    runtime('org.springframework.boot:spring-boot-devtools')
+}
+jar {
+    dependsOn buildClient
+}
+
+
+bootRun.dependsOn(buildClientDev)
+
+

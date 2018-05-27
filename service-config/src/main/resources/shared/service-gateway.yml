@@ -1,0 +1,9 @@
+server:
+  port: 8686
+
+zuul:
+  routes:
+    service-link:
+      path: /short
+      stripPrefix: false
+      serviceId: SERVICE-LINK

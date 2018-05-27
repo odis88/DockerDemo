@@ -1,0 +1,9 @@
+server:
+  port: 8989
+
+spring:
+  data:
+    mongodb:
+      host: link-mongodb
+      database: links
+      port: 27017
